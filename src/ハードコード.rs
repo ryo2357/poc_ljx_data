@@ -2,19 +2,20 @@ use std::fs::File;
 use std::io::{Write,Read,BufReader};
 use log::{info};
 
-static PROFILE_DATA: &str = "data/1/data_2023-02-01_144735.hex";
+static DUMMY_DATA: &str = "data/dummy.hex";
 
 static PROFILE_NUM: usize = 3200;
 static HEADER_NUM: usize =4 ;
 static BYTE_SIZE: usize = 4;
 
 static LOAD_SIZE: usize = BYTE_SIZE *(HEADER_NUM + PROFILE_NUM);
+
 fn main() -> anyhow::Result<()>{
     my_logger::init();
     info!("logger initialized");
     wait_until_enter();
 
-    let mut reader = BufReader::new(File::open(PROFILE_DATA)?);
+    let mut reader = BufReader::new(File::open(DUMMY_DATA)?);
     info!("create reader successfully");
     wait_until_enter();
 
